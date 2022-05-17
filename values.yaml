@@ -24,7 +24,7 @@ lables:
   protocol: TCP
 containers:
   name: app-dev-job
-  image: pratapp12/oeapp:v4.1 
+  image: pratapp12/oeapp:v4.2
   imagepullpolicy: Always
   dbname: OVALEDGE_MYSQL_URL
   dbnamevalue: jdbc:mysql://database-1.c560uxygxrjh.ap-south-1.rds.amazonaws.com:3306/ovaledgedb?useSSL=false 
