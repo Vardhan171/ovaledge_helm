@@ -10,7 +10,7 @@ replicas: 1
 
 tport: 8080
 
-port: 8090
+port: 9090
 
 app: app-dev-job
 
