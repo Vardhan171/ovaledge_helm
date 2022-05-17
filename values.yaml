@@ -1,0 +1,62 @@
+Namespacename: pf
+
+Deploymentname: ovaledge-job-deployment
+
+Ingressname: sampleingress
+
+servicename: tomcat-svc
+
+replicas: 1
+
+port: 8080
+
+app: app-dev-job
+
+services:
+  servicetype: LoadBalancer
+  type: tomcat
+  protocol: TCP
+
+lables: 
+  app: 
+  protocol: TCP
+containers:
+  name: app-dev-job
+  image: pratapp12/oeapp:v4 
+  imagepullpolicy: Always
+  dbname: OVALEDGE_MYSQL_URL
+  dbnamevalue: jdbc:mysql://database-1.c560uxygxrjh.ap-south-1.rds.amazonaws.com:3306/ovaledgedb?useSSL=false 
+  dbuser: OVALEDGE_MYSQL_USER
+  dbuservalue: admin
+  dbpasswordname: OVALEDGE_MYSQL_PWORD
+  dbpasswordvalue: ovaledge123
+  metadata: OVALEDGE_SAML_META_DATA
+  metadataurl: https://ovaledge-ma.okta.com/app/exkbqnqdbnfYdOJEe5d6/sso/saml/metadata
+  encryptname: OVALEDGE_ENCRYPT_DECRYPT_KEY
+  encryptpassword: ovaledge2021
+  security: OVALEDGE_SECURITY_TYPE
+  securitytype: db
+  metadatatypename: SAML_METADATA_TYPE
+  metadatatypeurl: url
+  protocoltype: ENTITY_BASE_PROTOCOL
+  protocol: https
+  host: ENTITY_BASE_HOST
+  hostvalue: fg.ovaledge.net
+  extprop: ext.properties.dir
+  extproppath: /usr/local/tomcat/conf/
+  contextpathname: ENTITY_BASE_CONTEXTPATH
+  contextpath: /ovaledge
+  baseport: ENTITY_BASE_PORT
+  baseportnum: 443
+  portinurl: ENTITY_BASE_PORT_INURL
+  portinurlfalse: false
+  baseislb: ENTITY_BASE_ISLB
+  baseislbstatus: false
+  entitybaseurl: entityBaseURL
+  entitybaseurlvalue: 
+externalsecrets:
+  kind: ExternalSecret
+  metadata: cred
+  backendtype: secretsManager
+  region: ap-southeast-1
+  dataform: mysqldatabaser

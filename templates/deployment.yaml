@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.Namespacename }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{ .Values.Namespacename }}
+  name: {{ .Values.Deploymentname }}
+  labels:
+    app: {{ .Values.app }}
+spec:
+  replicas: {{ .Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app }}
+    spec:
+      containers: 
+      - image: {{ .Values.containers.image }}
+        imagePullPolicy: {{ .Values.containers.imagepullpolicy }}
+        name: {{ .Values.containers.name }}
+        env:
+         - name: {{ .Values.containers.dbname }}
+           value: {{ .Values.containers.dbnamevalue | quote }}
+         - name: {{ .Values.containers.dbuser }}
+           value: {{ .Values.containers.dbuservalue }}
+         - name: {{ .Values.containers.dbpasswordname }}
+           value: {{ .Values.containers.dbpasswordvalue }}
+         - name: {{ .Values.containers.encryptname }}
+           value: {{ .Values.containers.encryptpassword | quote }}
+         - name: {{ .Values.containers.metadata }}
+           value: {{ .Values.containers.metadataurl | quote }}
+         - name: {{ .Values.containers.security }}
+           value: {{ .Values.containers.securitytype | quote }}
+         - name: {{ .Values.containers.metadatatypename }}
+           value: {{ .Values.containers.metadatatypeurl | quote }}
+         - name: {{ .Values.containers.protocoltype }}
+           value: {{ .Values.containers.protocol | quote }}
+         - name: {{ .Values.containers.host }}
+           value: {{ .Values.containers.hostvalue }}
+         - name: {{ .Values.containers.extprop }}
+           value: {{ .Values.containers.extproppath | quote }}
+         - name: {{ .Values.containers.contextpathname }}
+           value: {{ .Values.containers.contextpath | quote }}
+         - name: {{ .Values.containers.baseport }}
+           value: {{ .Values.containers.baseportnum | quote }}
+         - name: {{ .Values.containers.portinurl }}
+           value: {{ .Values.containers.portinurlfalse | quote }}
+         - name: {{ .Values.containers.baseislb }}
+           value: {{ .Values.containers.baseislbstatus | quote }}
+         - name: {{ .Values.containers.entitybaseurl }}
+           value: {{ .Values.containers.entitybaseurlvalue | quote }}
+        ports:
+          - containerPort: 8080
