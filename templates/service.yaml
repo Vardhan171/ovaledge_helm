@@ -10,7 +10,7 @@ metadata:
 spec:
   ports:
     - port: {{ .Values.port }}
-      targetPort: {{ .Values.port }}
+      targetPort: {{ .Values.tport }}
       protocol: {{ .Values.services.protocol }}
   selector:
     app: {{ .Values.app }}
