@@ -11,7 +11,7 @@ spec:
   source:
     helm:
     chart: quarkus
-    repoURL: https://github.com/Vardhan171/Argocd_OE_helm.git
+    repoURL: https://github.com/Vardhan171/ovaledge_helm.git
     targetRevision: 0.0.3
   syncPolicy:
     automated:
