@@ -6,7 +6,7 @@ Ingressname: sampleingress
 
 servicename: tomcat-svc
 
-replicas: 1
+replicas: 2
 
 tport: 8080
 
